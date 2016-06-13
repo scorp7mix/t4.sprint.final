@@ -1,0 +1,11 @@
+<div class="row">
+    {% for item in items %}
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading pull-right">{{ item.category.title }}</div>
+                <div class="panel-body"><strong>{{ item.title }}</strong></div>
+                <div class="panel-footer"><em>Price: ${{ item.price | number_format(2) }}</em></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

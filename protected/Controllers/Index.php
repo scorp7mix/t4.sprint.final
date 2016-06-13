@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
 use T4\Mvc\Controller;
 
 class Index
@@ -10,6 +11,9 @@ class Index
 
     public function actionDefault()
     {
+        $this->data->categories = Category::findAll()->sort(function(Category $c1, Category $c2) {
+            return $c2->findChildProducts()->count() <=> $c1->findChildProducts()->count();
+        });
     }
 
 }
