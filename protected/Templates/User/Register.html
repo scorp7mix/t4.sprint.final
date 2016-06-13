@@ -1,9 +1,8 @@
 {% extends 'index.html' %}
 
+{% block page_title %}Register{% endblock %}
+
 {% block content %}
-    <div class="page-header">
-        <h2 id="forms">Register</h2>
-    </div>
     {% for e in errors %}
         <p class="alert alert-danger">{{ e.getMessage }}</p>
     {% endfor %}

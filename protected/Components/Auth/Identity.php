@@ -90,8 +90,6 @@ class Identity
         $user->roles->add(UserRole::findByName('user'));
         $user->password = password_hash($data->password, PASSWORD_DEFAULT);
         $user->save();
-
-        return $user;
     }
 
     public function logout()

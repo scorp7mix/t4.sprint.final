@@ -1,9 +1,8 @@
 {% extends 'index.html' %}
 
+{% block page_title %}Log In{% endblock %}
+
 {% block content %}
-    <div class="page-header">
-        <h2 id="forms">Log In</h2>
-    </div>
     {% for e in errors %}
         <p class="alert alert-danger">{{ e.getMessage }}</p>
     {% endfor %}

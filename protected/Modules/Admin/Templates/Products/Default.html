@@ -1,0 +1,40 @@
+{% extends 'admin.html' %}
+
+{% block page_title %}Products{% endblock %}
+
+{% block content %}
+    <div class="clearfix">
+        <a href="/admin/products/edit.html" class="btn btn-primary pull-right">Add new product</a>
+    </div>
+    <br>
+    {% if items.count == 0 %}
+        <p class="alert alert-info">No products found</p>
+    {% else %}
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.pk }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.category.title }}</td>
+                    <td>{{ item.price | number_format(2, '.', ' ')}}</td>
+                    <th>
+                        <a class="btn btn-primary btn-xs" href="/admin/products/edit.html?id={{ item.pk }}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

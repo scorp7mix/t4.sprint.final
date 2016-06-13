@@ -42,4 +42,9 @@ class User
         }
         return true;
     }
+
+    public function hasRole(string $roleName)
+    {
+        return !empty($this->roles->findByAttributes(['name' => $roleName]));
+    }
 }
