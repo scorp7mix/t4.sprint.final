@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="page-header">
+        <h2 id="forms">Register</h2>
+    </div>
+    {% for e in errors %}
+        <p class="alert alert-danger">{{ e.getMessage }}</p>
+    {% endfor %}
+    <form action="/user/register.html" class="form-horizontal" method="post">
+        <div class="form-group">
+            <label for="form[firstName]" class="col-sm-3 control-label">First Name *</label>
+            <div class="col-sm-7">
+                <input type="text" name="form[firstName]" id="form[firstName]" class="form-control" value="{{ user.firstName }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form[lastName]" class="col-sm-3 control-label">Last Name *</label>
+            <div class="col-sm-7">
+                <input type="text" name="form[lastName]" id="form[lastName]" class="form-control" value="{{ user.lastName }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form[email]" class="col-sm-3 control-label">E-mail *</label>
+            <div class="col-sm-7">
+                <input type="text" name="form[email]" id="form[email]" class="form-control" value="{{ user.email }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form[password]" class="col-sm-3 control-label">Password *</label>
+            <div class="col-sm-7">
+                <input type="password" name="form[password]" id="form[password]" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form[password2]" class="col-sm-3 control-label">Retype password *</label>
+            <div class="col-sm-7">
+                <input type="password" name="form[password2]" id="form[password2]" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-7">
+                <span class="help-block">* required fields</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-7">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{
+  "name": "scorp7mix/t4.sprint.final",
+  "description": "final application for t4 sprint",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Maxim Fedorov",
+      "email": "scorp7mix@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "pr-of-it/t4": "dev-master"
+  }
+}
