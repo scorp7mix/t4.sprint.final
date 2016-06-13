@@ -30,8 +30,7 @@ class User
         if (null !== $form) {
             try {
                 $auth = new Identity();
-                $auth->register($form);
-                $auth->login($form);
+                $auth->login($auth->register($form));
                 $this->redirect('/');
             } catch (MultiException $e) {
                 $this->data->errors = $e;

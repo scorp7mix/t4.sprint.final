@@ -27,31 +27,35 @@ class Identity
         return null;
     }
 
-    public function login(Std $data)
+    public function login($data)
     {
-        $errors = new MultiException();
+        if ($data instanceof User) {
+            $user = $data;
+        } else {
+            $errors = new MultiException();
 
-        if (empty($data->email)) {
-            $errors->add(new Exception('Email cannot be empty'));
-        }
-        if (empty($data->password)) {
-            $errors->add(new Exception('Password cannot be empty'));
-        }
-        if (!$errors->isEmpty()) {
-            throw $errors;
-        }
+            if (empty($data->email)) {
+                $errors->add(new Exception('Email cannot be empty'));
+            }
+            if (empty($data->password)) {
+                $errors->add(new Exception('Password cannot be empty'));
+            }
+            if (!$errors->isEmpty()) {
+                throw $errors;
+            }
 
-        $user = User::findByEmail($data->email);
-        if (empty($user)) {
-            $errors->add(new Exception('User not found'));
-            throw $errors;
-        }
+            $user = User::findByEmail($data->email);
+            if (empty($user)) {
+                $errors->add(new Exception('User not found'));
+                throw $errors;
+            }
 
-        if (!password_verify($data->password, $user->password)) {
-            $errors->add(new Exception('Password wrong'));
-            throw $errors;
+            if (!password_verify($data->password, $user->password)) {
+                $errors->add(new Exception('Password wrong'));
+                throw $errors;
+            }
         }
-
+        
         $hash = sha1(microtime() . mt_rand());
         $session = new UserSession();
         $session->hash = $hash;
@@ -90,6 +94,8 @@ class Identity
         $user->roles->add(UserRole::findByName('user'));
         $user->password = password_hash($data->password, PASSWORD_DEFAULT);
         $user->save();
+        
+        return $user;
     }
 
     public function logout()
