@@ -1,0 +1,22 @@
+a.navbar-brand {
+    padding: 7px 15px;
+}
+
+a.navbar-brand img {
+    display: inline-block;
+    height: 50px;
+}
+
+div.panel-heading {
+    padding: 5px;
+    font-size: 10px;
+    font-style: italic;
+}
+
+div.panel-body {
+    font-size: 16px;
+}
+
+div.panel-footer {
+    padding: 5px 15px;
+}
