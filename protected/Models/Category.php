@@ -29,11 +29,10 @@ class Category
 
     static protected $extensions = ['tree'];
 
-    public function findChildProducts()
+    public function countChildProducts()
     {
-        return Product::findAllByQuery(
+        return Product::countAllByQuery(
             (new QueryBuilder())
-                ->select('t1.*')
                 ->from(Product::getTableName())
                 ->join(self::getTableName(), 't1.__category_id = j1.__id', 'left')
                 ->where('j1.__lft >= :lft AND j1.__rgt <= :rgt')

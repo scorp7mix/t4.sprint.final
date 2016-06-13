@@ -5,7 +5,7 @@
     <ul class="list-group">
         {% for category in categories.slice(0, 3) %}
         <li class="list-group-item">
-            <span class="badge">{{ category.findChildProducts.count }}</span>
+            <span class="badge">{{ category.countChildProducts }}</span>
             {{ category.title }}
         </li>
         {% endfor %}

@@ -12,7 +12,7 @@ class Index
     public function actionDefault()
     {
         $this->data->categories = Category::findAll()->sort(function(Category $c1, Category $c2) {
-            return $c2->findChildProducts()->count() <=> $c1->findChildProducts()->count();
+            return $c2->countChildProducts() <=> $c1->countChildProducts();
         });
     }
 
